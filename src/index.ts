@@ -232,15 +232,21 @@ function runCli(): void {
 
   program.parseAsync(process.argv).catch((error: unknown) => {
     if (error instanceof GracefulExit) {
-      if (error.code !== 0 && error.message) {
-        console.error(chalk.red(`\n✖ ${error.message}\n`));
+      if (error.message) {
+        console.log(chalk.yellow(`\n${error.message}\n`));
       }
 
       process.exit(error.code);
     }
 
+    if (error instanceof InvalidArgumentError) {
+      console.error(chalk.red(`\n✖ ${error.message}\n`));
+      process.exit(2);
+    }
+
     const message = error instanceof Error ? error.message : String(error);
-    console.error(chalk.red(`\n✖ ${message}\n`));
+    console.error(chalk.red(`\n✖ Unexpected error: ${message}\n`));
+
     process.exit(1);
   });
 }
