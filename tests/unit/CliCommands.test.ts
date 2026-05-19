@@ -72,7 +72,7 @@ vi.mock("../../src/llm/ProviderSettings.js", () => ({
   })),
 }));
 
-vi.mock("../../src/config/config.js", () => ({
+vi.mock("../../src/config/Config.js", () => ({
   config: {
     llm: {
       defaultProvider: "openai",
@@ -115,7 +115,7 @@ describe("CLI commands", () => {
   });
 
   async function runCommand(args: string[]): Promise<CommandResult> {
-    const { createProgram } = await import("../../src/index.js");
+    const { createProgram } = await import("../../src/Index.js");
 
     const program = createProgram();
 
@@ -316,7 +316,7 @@ describe("CLI commands", () => {
       expect(printed).toContain("Generation model:");
       expect(printed).toContain("gemini-2.5-flash-lite");
       expect(printed).toContain(
-        "Hint: To use different models, add a new provider profile in src/config/config.ts.",
+        "Hint: To use different models, add a new provider profile in src/config/Config.ts.",
       );
     });
 

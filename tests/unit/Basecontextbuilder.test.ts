@@ -78,7 +78,7 @@ describe("BaseContextBuilder", () => {
   describe("filePenalty", () => {
     it("returns 0 for regular source files", () => {
       const builder = createBuilder();
-      expect((builder as any).filePenalty("src/index.ts")).toBe(0);
+      expect((builder as any).filePenalty("src/Index.ts")).toBe(0);
       expect((builder as any).filePenalty("lib/utils.js")).toBe(0);
       expect((builder as any).filePenalty("README.md")).toBe(0);
     });
@@ -104,7 +104,7 @@ describe("BaseContextBuilder", () => {
 
     it("penalizes build/dist output directories", () => {
       const builder = createBuilder();
-      expect((builder as any).filePenalty("dist/index.js")).toBe(35);
+      expect((builder as any).filePenalty("dist/Index.js")).toBe(35);
       expect((builder as any).filePenalty("build/output.js")).toBe(35);
       expect((builder as any).filePenalty("coverage/lcov.info")).toBe(35);
       expect((builder as any).filePenalty("vendor/lib.js")).toBe(35);
@@ -297,7 +297,7 @@ describe("BaseContextBuilder", () => {
       const builder = createBuilder();
       const entries = [
         { status: "M", file: "package-lock.json" },
-        { status: "M", file: "src/index.ts" },
+        { status: "M", file: "src/Index.ts" },
       ];
 
       // Need to stub getChangeSize for prioritization
@@ -306,7 +306,7 @@ describe("BaseContextBuilder", () => {
       });
 
       const sorted = (builder as any).prioritizeEntries(entries);
-      expect(sorted[0].file).toBe("src/index.ts");
+      expect(sorted[0].file).toBe("src/Index.ts");
       expect(sorted[1].file).toBe("package-lock.json");
     });
 

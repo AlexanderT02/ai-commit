@@ -4,12 +4,12 @@ import { execFileSync } from "child_process";
 import { fileURLToPath } from "url";
 import chalk from "chalk";
 import { Command, InvalidArgumentError } from "commander";
-import { config } from "./config/config.js";
+import { config } from "./config/Config.js";
 import { App } from "./core/App.js";
-import { GracefulExit } from "./errors.js";
+import { GracefulExit } from "./Errors.js";
 import { StatsRenderer } from "./stats/StatsRenderer.js";
 import { ProviderSettings } from "./llm/ProviderSettings.js";
-import type { LLMProviderName } from "./config/config.js";
+import type { LLMProviderName } from "./config/Config.js";
 import { realpathSync } from "fs";
 import { createRequire } from "module";
 
@@ -188,7 +188,7 @@ export function createProgram(): Command {
       console.log("");
       console.log(
         chalk.gray(
-          "Hint: To use different models, add a new provider profile in src/config/config.ts.",
+          "Hint: To use different models, add a new provider profile in src/config/Config.ts.",
         ),
       );
       console.log("");

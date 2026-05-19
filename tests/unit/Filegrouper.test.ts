@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { groupFiles, type FileGroupingInput } from "../../src/staging/fileGrouper.js";
-import type { DiffStats, StatusEntry } from "../../src/types/types.js";
+import { groupFiles, type FileGroupingInput } from "../../src/staging/FileGrouper.js";
+import type { DiffStats, StatusEntry } from "../../src/types/Types.js";
 
 function entry(file: string, code: string, opts: Partial<StatusEntry> = {}): StatusEntry {
   return { file, code, ...opts };
@@ -121,7 +121,7 @@ describe("groupFiles", () => {
         entry("src/auth/middleware.ts", "M"),
         entry("src/auth/types.ts", "M"),
         entry("src/auth/utils.ts", "M"),
-        entry("src/auth/index.ts", "M"),
+        entry("src/auth/Index.ts", "M"),
       ];
 
       const groups = groupFiles(makeInput(files), 4);

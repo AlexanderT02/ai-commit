@@ -33,7 +33,7 @@ vi.mock("fs", () => ({
   }),
 }));
 
-vi.mock("../src/config/config.js", () => ({
+vi.mock("../src/config/Config.js", () => ({
   config: {
     llm: {
       defaultProvider: "openai",
@@ -55,7 +55,7 @@ vi.mock("../src/config/config.js", () => ({
   },
 }));
 
-const CONFIG_FILE = "/mock-home/.git-writer/config.json";
+const CONFIG_FILE = "/mock-home/.git-writer/Config.json";
 
 describe("ProviderSettings", () => {
   beforeEach(() => {

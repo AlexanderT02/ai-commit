@@ -10,7 +10,7 @@ import { tmpdir } from "os";
 import { join } from "path";
 import { UI } from "../src/ui/UI.js";
 import { execFileSync } from "child_process";
-import { GracefulExit } from "../src/errors.js";
+import { GracefulExit } from "../src/Errors.js";
 
 const mockLLM = {
   complete: vi.fn(async () => ({
@@ -56,9 +56,9 @@ vi.mock("../src/llm/Factory.js", () => ({
   createLLMProvider: vi.fn(() => mockLLM),
 }));
 
-vi.mock("../src/staging/treePrompt.js", async () => {
-  const actual = await vi.importActual<typeof import("../src/staging/treePrompt.js")>(
-    "../src/staging/treePrompt.js",
+vi.mock("../src/staging/TreePrompt.js", async () => {
+  const actual = await vi.importActual<typeof import("../src/staging/TreePrompt.js")>(
+    "../src/staging/TreePrompt.js",
   );
 
   return {
