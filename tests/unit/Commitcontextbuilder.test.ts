@@ -14,11 +14,11 @@ describe("CommitContextBuilder", () => {
   describe("getStagedEntries", () => {
     it("parses name-status output into entries", () => {
       const builder = createBuilder({
-        getStagedNameStatus: "M\tsrc/index.ts\nA\tsrc/new.ts\nD\tsrc/old.ts",
+        getStagedNameStatus: "M\tsrc/Index.ts\nA\tsrc/new.ts\nD\tsrc/old.ts",
       });
       const entries = builder.getStagedEntries();
       expect(entries).toHaveLength(3);
-      expect(entries[0]).toEqual({ status: "M", file: "src/index.ts" });
+      expect(entries[0]).toEqual({ status: "M", file: "src/Index.ts" });
       expect(entries[1]).toEqual({ status: "A", file: "src/new.ts" });
       expect(entries[2]).toEqual({ status: "D", file: "src/old.ts" });
     });

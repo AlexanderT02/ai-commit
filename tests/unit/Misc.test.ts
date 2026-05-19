@@ -185,21 +185,21 @@ describe("GitHubCLIService", () => {
 
 describe("Error classes", () => {
   it("GracefulExit has correct defaults", async () => {
-    const { GracefulExit } = await import("../../src/errors.js");
+    const { GracefulExit } = await import("../../src/Errors.js");
     const err = new GracefulExit();
     expect(err.code).toBe(0);
     expect(err.name).toBe("GracefulExit");
   });
 
   it("GracefulExit accepts custom code", async () => {
-    const { GracefulExit } = await import("../../src/errors.js");
+    const { GracefulExit } = await import("../../src/Errors.js");
     const err = new GracefulExit(1, "custom");
     expect(err.code).toBe(1);
     expect(err.message).toBe("custom");
   });
 
   it("UserCancelledError extends GracefulExit with code 0", async () => {
-    const { UserCancelledError, GracefulExit } = await import("../../src/errors.js");
+    const { UserCancelledError, GracefulExit } = await import("../../src/Errors.js");
     const err = new UserCancelledError();
     expect(err).toBeInstanceOf(GracefulExit);
     expect(err.code).toBe(0);

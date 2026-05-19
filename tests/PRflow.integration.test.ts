@@ -10,7 +10,7 @@ import {
 import { tmpdir } from "os";
 import { join } from "path";
 import { execFileSync } from "child_process";
-import { GracefulExit, UserCancelledError } from "../src/errors.js";
+import { GracefulExit, UserCancelledError } from "../src/Errors.js";
 
 type LLMUsage = {
   inputTokens: number;

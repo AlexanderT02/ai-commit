@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { CostEstimator } from "../../src/stats/CostEstimator.js";
-import type { UsageLLMCall, UsageEntry } from "../../src/types/types.js";
+import type { UsageLLMCall, UsageEntry } from "../../src/types/Types.js";
 
 function makeLLMCall(overrides: Partial<UsageLLMCall> = {}): UsageLLMCall {
   return {
